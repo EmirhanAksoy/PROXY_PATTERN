@@ -1,0 +1,1 @@
+﻿namespace PROXY_PATTERN;
