@@ -8,6 +8,9 @@ Console.WriteLine("PROXY PATTERN");
 VirtualProxyTest();
 
 
+await RemoteProxyTest("",new());
+
+
 
 
 
@@ -29,4 +32,11 @@ static void VirtualProxyTest()
     list = expensiveToLoad.List;
 
     Console.WriteLine(list.Count);
+}
+
+// Remote Proxy Generated With NSwag
+static async Task RemoteProxyTest(string baseUrl,HttpClient httpClient)
+{
+    RemoteProxy remoteProxy = new(baseUrl, httpClient);
+    var response = await remoteProxy.OnDutyPharmaciesAsync();
 }
