@@ -13,6 +13,8 @@ Console.WriteLine("PROXY PATTERN");
 // SmartProxyTest();
 
 
+// ProtectiveProxyTest();
+
 
 // Virtual Proxy
 static void VirtualProxyTest()
@@ -35,7 +37,7 @@ static void VirtualProxyTest()
 }
 
 // Remote Proxy (Generated With NSwag)
-static async Task RemoteProxyTest(string baseUrl,HttpClient httpClient)
+static async Task RemoteProxyTest(string baseUrl, HttpClient httpClient)
 {
     RemoteProxy remoteProxy = new(baseUrl, httpClient);
     var response = await remoteProxy.OnDutyPharmaciesAsync();
@@ -76,4 +78,28 @@ static void SmartProxyTest()
     {
         smartStream.Close();
     }
+}
+
+// Protective Proxy
+static void ProtectiveProxyTest()
+{
+    User admin = new()
+    {
+        Id = 1,
+        Name = "Admin",
+        Role = Roles.Admin
+    };
+
+    User user = new()
+    {
+        Id = 1,
+        Name = "User",
+        Role = Roles.User
+    };
+
+    var protectedDocument = Document.Create("1984", "George Orwell");
+
+    protectedDocument.UpdateName(admin, "Animal Farm");
+
+    protectedDocument.UpdateName(user, "Atomic Habits");
 }
